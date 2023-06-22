@@ -23,19 +23,19 @@ module.exports = ({strapi}) => ({
     return await strapi
       .query('plugin::strapi-plugin-sso.roles')
       .findOne({
-        'oauth_type': this.SSO_TYPE_GOOGLE
+        where: { 'oauth_type': this.SSO_TYPE_GOOGLE },
       })
   },
   async cognitoRoles() {
     return await strapi
       .query('plugin::strapi-plugin-sso.roles')
       .findOne({
-        'oauth_type': this.SSO_TYPE_COGNITO
+        where: { 'oauth_type': this.SSO_TYPE_COGNITO },
       })
   },
   async azureAdRoles() {
-    return await strapi.query('plugin::strapi-plugin-sso.roles').findOne({
-      oauth_type: this.SSO_TYPE_AZUREAD,
+    return await strapi.query("plugin::strapi-plugin-sso.roles").findOne({
+      where: { 'oauth_type' : this.SSO_TYPE_AZUREAD },
     });
   },
   async find() {
